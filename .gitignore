@@ -1,0 +1,6 @@
+modelnet40_normal_resampled/ 
+.vscode/ 
+build/
+devel/
+.catkin_workspace
+!.catkin_workspace/
