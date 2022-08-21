@@ -88,11 +88,11 @@ kdtree.py， octree.py， 以及 benchmark.py 详见 https://github.com/xuezhen5
    ```
 ### Task 4 展示 benchmark 的结果
 benchmark 的结果如下所示，增加了自适应的 kdtree。
-octree --------------
+octree --------------  
 Octree: build 4390.440, knn 0.584, radius 0.515, brute 8.200
-kdtree --------------
+kdtree --------------  
 Kdtree: build 117.630, knn 2.483, radius 0.288, brute 7.755
-adaptive kdtree --------------
+adaptive kdtree --------------  
 Adaptive kdtree: build 112.729, knn 1.078, radius 0.287, brute 7.755
 
 基于以上结果可以得到以下结论:

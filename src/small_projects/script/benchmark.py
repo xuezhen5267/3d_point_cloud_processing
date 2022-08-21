@@ -1,5 +1,5 @@
 # 对数据集中的点云，批量执行构建树和查找，包括kdtree和octree，并评测其运行时间
-
+#! /usr/bin/env python
 import random
 import math
 import numpy as np

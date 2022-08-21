@@ -1,4 +1,5 @@
-# octree的具体实现，包括构建和查找
+#! /usr/bin/env python
+# # octree的具体实现，包括构建和查找
 
 import random
 import math

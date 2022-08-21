@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 # kdtree的具体实现，包括构建和查找
 
 import random

@@ -142,6 +142,7 @@ add_definitions(${EIGEN_DEFINITIONS}) ## for Eigen
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(chapter_1 src/chapter_1.cpp)
+add_executable(chapter_3 src/chapter_3.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -155,6 +156,11 @@ add_executable(chapter_1 src/chapter_1.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(chapter_1
+  ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
+
+target_link_libraries(chapter_3
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
 )
