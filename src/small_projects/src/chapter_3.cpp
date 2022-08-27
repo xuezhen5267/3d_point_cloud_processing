@@ -6,18 +6,19 @@
 #include <chapter_3/cluster_algorithm.h>
 #include <chapter_3/cluster_algorithm.hpp>
 
+
 int main(int argc, char* argv[])
 {
     // read pcd file
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZRGBA>);
     pcl::io::loadPCDFile<pcl::PointXYZRGBA> (argv[1], *cloud);
-    //pcl::io::loadPCDFile<pcl::PointXYZRGBA> ("data/cluster_data/noisy_moons.pcd", *cloud);
+    // pcl::io::loadPCDFile<pcl::PointXYZRGBA> ("data/cluster_data/noisy_moons.pcd", *cloud);
 
     // cluster
     ClusterAlgorithm cluster;
     boost::shared_ptr<std::vector<pcl::PointIndices>> cluster_indeces(new std::vector<pcl::PointIndices>);
     int cluster_num = std::stoi(argv[3]);
-    int max_iterations = 10;
+    int max_iterations = 50;
     cluster.setInputPointCloud(cloud);
     cluster.setClusterMethod(argv[2]); // "KMeans", "GMM", or "Spectral_Clustering"
     cluster.setClusterNumber(cluster_num);
@@ -41,7 +42,7 @@ int main(int argc, char* argv[])
 	};
     for ( int cluster_index = 0; cluster_index < cluster_num; ++cluster_index) // go over all the cluster
     {
-        pcl::PointIndices point_indices = cluster_indeces->at(cluster_index); // go over all the indices in oine cluster
+        pcl::PointIndices point_indices = cluster_indeces->at(cluster_index); // go over all the indices in one cluster
         uint32_t rand_rgba = std::rand();
         for (int indice_index = 0; indice_index < point_indices.indices.size(); ++indice_index )
         {
@@ -52,9 +53,9 @@ int main(int argc, char* argv[])
     }
     // visualization
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer("cluster_viewer"));
-    viewer->setBackgroundColor(0, 0, 0);
+    viewer->setBackgroundColor(1, 1, 1);
     viewer->addPointCloud<pcl::PointXYZRGBA> (cloud, "point_cloud"); // visulize raw point cloud
-    viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 5, "point_cloud");
+    viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "point_cloud");
     while (!viewer->wasStopped()) // keep viewer
     {
         viewer->spinOnce(100);
