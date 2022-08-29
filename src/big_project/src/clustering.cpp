@@ -65,8 +65,8 @@ int main(int argc, char* argv[])
 
     DBSCANSimpleCluster<pcl::PointXYZRGBA> dbscan; // 自定义的类
     dbscan.setCorePointMinPts(5);
-    dbscan.setClusterTolerance(2.0);
-    dbscan.setMinClusterSize(10);
+    dbscan.setClusterTolerance(1);
+    dbscan.setMinClusterSize(5);
     dbscan.setMaxClusterSize(1000);
 
     ros::Publisher pub = nh.advertise<sensor_msgs::PointCloud2>("/objects_with_cluster", 1);

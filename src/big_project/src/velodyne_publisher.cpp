@@ -4,13 +4,29 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <chapter_1/basic_algorithm.h>
+#include <stdio.h>
 
 int main(int argc, char* argv[])
 {
+
+    char *buffer;
+    //也可以将buffer作为输出参数
+    if((buffer = getcwd(NULL, 0)) == NULL)
+    {
+        perror("getcwd error");
+    }
+    else
+    {
+        printf("path:%s\n", buffer);
+        free(buffer);
+    }
+
+
   // read pcd processing
   pcl::PointCloud<pcl::PointXYZRGBA>::Ptr raw_cloud(new pcl::PointCloud<pcl::PointXYZRGBA>);
   pcl::PointCloud<pcl::PointXYZRGBA>::Ptr downsampled_cloud(new pcl::PointCloud<pcl::PointXYZRGBA>);
   pcl::io::loadPCDFile<pcl::PointXYZRGBA> (argv[1], *raw_cloud);
+  // pcl::io::loadPCDFile<pcl::PointXYZRGBA> ("data/KITTI/000000.pcd", *raw_cloud);
   BasicAlgorithm basic_algorithm;
   float voxel_size = 0.2;
   basic_algorithm.setInputPointCloud(raw_cloud);

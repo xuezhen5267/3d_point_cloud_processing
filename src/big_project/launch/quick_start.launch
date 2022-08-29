@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="big_project" name="velodyne_publisher" type="velodyne_publisher" args="$(find big_project)/../../data/KITTI/000000.pcd" output="screen"/>
+    <node pkg="big_project" name="ground_removal" type="ground_removal"/>
+    <node pkg="big_project" name="clustering" type="clustering"/>
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find big_project)/config/rviz_cfg.rviz"/>
+</launch>

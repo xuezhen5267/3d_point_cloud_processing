@@ -19,7 +19,7 @@ def main():
     db_np = read_velodyne_bin(filename)
     cloud = o3d.geometry.PointCloud()
     cloud.points = o3d.utility.Vector3dVector(db_np)
-    o3d.io.write_point_cloud("../../../data/KITTI/xxx.pcd", cloud, write_ascii=True)
+    o3d.io.write_point_cloud("../../../data/KITTI/000000.pcd", cloud, write_ascii=True)
 
 if __name__ == '__main__':
     main()
