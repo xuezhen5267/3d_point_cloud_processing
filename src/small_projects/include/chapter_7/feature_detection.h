@@ -43,12 +43,12 @@ public:
     
     void NMS(std::list<std::pair<int, float>>& input_points, std::vector<std::pair<int, float>>& output_points);
 
-    void getKeyPointIndices( std::vector<int>& key_point_indices)
+    void getKeyPointIndices( pcl::PointIndices::Ptr& key_point_indices)
     {  
-        key_point_indices.clear();
+        key_point_indices->indices.clear();
         for (int point_index = 0; point_index < key_points_after_NMS_.size(); ++point_index)
         {
-            key_point_indices.push_back(key_points_after_NMS_.at(point_index).first);
+            key_point_indices->indices.push_back(key_points_after_NMS_.at(point_index).first);
         }
     }
 

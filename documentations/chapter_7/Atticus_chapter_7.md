@@ -2,7 +2,7 @@
 ### How to run this code?
 This code is based on ROS noetic on ubuntu 20.04. The homework completed by C++ and is tested by a node named "chapter_1" in package "small_projects".
 1. Down load the whole workspace "3D_PointCloud_Processing".
-2. Check or modify the source file /src/small_projects/src/chapter_1.cpp
+2. Check or modify the source file /src/small_projects/src/chapter_7.cpp
 3. Compile the package as follows.
    ```shell
    cd 3D_PointClud_Processing

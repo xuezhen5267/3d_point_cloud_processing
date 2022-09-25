@@ -144,6 +144,7 @@ add_definitions(${EIGEN_DEFINITIONS}) ## for Eigen
 add_executable(chapter_1 src/chapter_1.cpp)
 add_executable(chapter_3 src/chapter_3.cpp)
 add_executable(chapter_7 src/chapter_7.cpp)
+add_executable(chapter_8 src/chapter_8.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -167,6 +168,11 @@ target_link_libraries(chapter_3
 )
 
 target_link_libraries(chapter_7
+  ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
+
+target_link_libraries(chapter_8
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
 )

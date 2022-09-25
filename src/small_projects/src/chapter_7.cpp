@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
     pcl::octree::OctreePointCloudSearch<pcl::PointXYZRGBA> octree(0.001f);
     boost::shared_ptr<pcl::octree::OctreePointCloudSearch<pcl::PointXYZRGBA>> octree_ptr = boost::make_shared<pcl::octree::OctreePointCloudSearch<pcl::PointXYZRGBA>>(octree);
     FeatureDetection fd;
-    std::vector<int> key_point_indices;
+    pcl::PointIndices::Ptr key_point_indices;
     fd.setInputPointCloud(cloud);
     fd.setOctree(octree_ptr);
     fd.setFeatureDetectionMethod("ISS");
@@ -40,14 +40,14 @@ int main(int argc, char* argv[])
 
     // Build the point cloud with key point indices
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr key_cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
-    key_cloud->width = key_point_indices.size();
+    key_cloud->width = key_point_indices->indices.size();
     key_cloud->height = 1;
     key_cloud->points.resize(key_cloud->width * key_cloud->height);
     for (int point_index = 0; point_index < key_cloud->width; ++point_index)
     {
-        key_cloud->points.at(point_index).x = cloud->at(key_point_indices.at(point_index)).x;
-        key_cloud->points.at(point_index).y = cloud->at(key_point_indices.at(point_index)).y;
-        key_cloud->points.at(point_index).z = cloud->at(key_point_indices.at(point_index)).z;
+        key_cloud->points.at(point_index).x = cloud->at(key_point_indices->indices.at(point_index)).x;
+        key_cloud->points.at(point_index).y = cloud->at(key_point_indices->indices.at(point_index)).y;
+        key_cloud->points.at(point_index).z = cloud->at(key_point_indices->indices.at(point_index)).z;
         key_cloud->points.at(point_index).r = 0; // set color is black
         key_cloud->points.at(point_index).g = 0;
         key_cloud->points.at(point_index).b = 0;
